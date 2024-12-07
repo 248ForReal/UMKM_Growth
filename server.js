@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 // Initialize Google Generative AI with your API key
-const genAI = new GoogleGenerativeAI("AIzaSyC1b-O6L0B3VK5i7nD4mnfLKc4A0vIjqIk"); // Replace with your actual API key
+const genAI = new GoogleGenerativeAI(""); // Replace with your actual API key
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 // Use Express to handle JSON request body parsing
