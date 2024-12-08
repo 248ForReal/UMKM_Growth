@@ -3,11 +3,20 @@ const express = require("express");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const app = express();
 const port = 3000;
+const cors = require('cors'); 
 
 // Initialize Google Generative AI with your API key
 const genAI = new GoogleGenerativeAI(""); // Replace with your actual API key
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
+app.use(cors({
+  credentials: true,
+  origin: [
+    'http://localhost:5173',
+  ],
+  methods: ['GET', 'POST'], // Specify allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'] // Specify allowed headers
+}));
 // Use Express to handle JSON request body parsing
 app.use(express.json());
 
@@ -321,6 +330,7 @@ app.post("/conclude", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 
 
